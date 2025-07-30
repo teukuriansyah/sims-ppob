@@ -1,16 +1,15 @@
-import React from 'react'
 import Input from "../components/Input.tsx"
 import Illustration from "../assets/Illustrasi Login.png"
 import Logo from "../assets/Logo.png"
 
 const Login = () => {
   return (
-    <div className="flex">
+    <div className="flex justify-between h-screen">
       {/* Form */}
-      <div className="flex flex-col gap-10 justify-center items-center">
+      <div className="flex flex-col gap-10 justify-center items-center border w-1/2">
         <div className="flex flex-col gap-7">
           <div className="flex items-center justify-center gap-3">
-            <img src={Logo} />
+            <img src={Logo}/>
             <h1 className="text-center font-bold text-2xl">SIMS PPOB</h1>
           </div>
           <div>
@@ -33,8 +32,8 @@ const Login = () => {
         </div>
       </div>
       {/* Illustration */}
-      <div>
-        <img src={Illustration} />
+      <div className="w-1/2">
+        <img src={Illustration} className="h-5/5 w-5/5 object-contain" />
       </div>
     </div>
   )
