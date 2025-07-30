@@ -1,10 +1,11 @@
-import React from 'react'
 import Input from "../components/Input.tsx"
+import Navbar from "../components/Navbar.tsx"
 
 const User = () => {
   return (
     <div>
-      <div className="flex flex-col gap-5 items-center">
+      <Navbar />
+      <div className="flex flex-col gap-5 items-center mt-16">
         <div className="flex flex-col gap-3">
           <div>gambar</div>
           <h1 className="text-2xl font-bold">Nama user</h1>

@@ -2,7 +2,7 @@ import Input from "../components/Input.tsx"
 import Illustration from "../assets/Illustrasi Login.png"
 import Logo from "../assets/Logo.png"
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="flex justify-between h-screen">
       {/* Form */}
@@ -20,6 +20,8 @@ const Login = () => {
           <form className="flex flex-col gap-10">
             <div className="flex flex-col gap-6">
               <Input inputType="email" placeholder="masukkan email anda" name="email"/>
+              <Input inputType="text" placeholder="nama depan" name="firstName"/>
+              <Input inputType="text" placeholder="nama belakang" name="lastName"/>
               <Input inputType="password" placeholder="masukkan password anda" name="password"/>
             </div>
             <div>
@@ -39,4 +41,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
