@@ -54,7 +54,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="p-4 flex flex-col gap-10">
+      <div className="py-5 px-12 flex flex-col gap-10">
         {/* Profile + saldo */}
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-4">
@@ -87,7 +87,7 @@ const Home = () => {
         </div>
       </div>
       {/* Promo */}
-      <div className="pl-4 mt-10">
+      <div className="pl-10 mt-10">
         <div>
           <h1 className="text-lg font-bold">Temukan promo menarik</h1>
         </div>
