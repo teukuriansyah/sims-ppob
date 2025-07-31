@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import Input from "../components/Input.tsx"
+import Modal from "../components/Modal.tsx"
 
 const Topup = () => {
   return (
@@ -47,6 +48,7 @@ const Topup = () => {
           </div>
         </div>
       </div>
+      {/* <Modal /> */}
     </div>
   )
 }

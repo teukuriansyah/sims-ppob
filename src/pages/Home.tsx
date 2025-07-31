@@ -1,5 +1,3 @@
-import { useState } from "react"
-import Carousel from "../components/Carousel.tsx"
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import PBB from "../assets/PBB.png"
@@ -98,7 +96,7 @@ const Home = () => {
         <div>
           <h1 className="text-lg font-bold">Temukan promo menarik</h1>
         </div>
-        <div className="flex gap-3 mt-2">
+        <div className="flex gap-3 mt-2 z-[-10]">
           <img src={Banner1} />
           <img src={Banner2} />
           <img src={Banner3} />
