@@ -38,12 +38,12 @@ const Topup = () => {
             </form>
           </div>
           <div className="w-1/3 grid grid-cols-3 px-4 gap-3">
-            <button className="border border-gray-300 rounded text-gray-400">Rp. 10.000</button>
-            <button className="border border-gray-300 rounded text-gray-400">Rp. 20.000</button>
-            <button className="border border-gray-300 rounded text-gray-400">Rp. 50.000</button>
-            <button className="border border-gray-300 rounded text-gray-400">Rp. 100.000</button>
-            <button className="border border-gray-300 rounded text-gray-400">Rp. 250.000</button>
-            <button className="border border-gray-300 rounded text-gray-400">Rp. 500.000</button>
+            <button className="border border-gray-500 rounded text-gray-600">Rp. 10.000</button>
+            <button className="border border-gray-500 rounded text-gray-600">Rp. 20.000</button>
+            <button className="border border-gray-500 rounded text-gray-600">Rp. 50.000</button>
+            <button className="border border-gray-500 rounded text-gray-600">Rp. 100.000</button>
+            <button className="border border-gray-500 rounded text-gray-600">Rp. 250.000</button>
+            <button className="border border-gray-500 rounded text-gray-600">Rp. 500.000</button>
           </div>
         </div>
       </div>

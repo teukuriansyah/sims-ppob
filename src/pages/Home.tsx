@@ -1,3 +1,4 @@
+import Carousel from "../components/Carousel.tsx"
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import PBB from "../assets/PBB.png"
@@ -91,6 +92,7 @@ const Home = () => {
         <div>
           <h1 className="text-lg font-bold">Temukan promo menarik</h1>
         </div>
+        <Carousel />
       </div>
     </div>
   )
