@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Carousel from "../components/Carousel.tsx"
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
@@ -13,6 +14,11 @@ import Makanan from "../assets/Voucher Makanan.png"
 import Kurban from "../assets/Kurban.png"
 import Zakat from "../assets/Zakat.png"
 import PaketData from "../assets/Paket Data.png"
+import Banner1 from "../assets/Banner 1.png"
+import Banner2 from "../assets/Banner 2.png"
+import Banner3 from "../assets/Banner 3.png"
+import Banner4 from "../assets/Banner 4.png"
+import Banner5 from "../assets/Banner 5.png"
 
 const Home = () => {
   const allBtn = [{
@@ -88,12 +94,16 @@ const Home = () => {
         </div>
       </div>
       {/* Promo */}
-      <div className="pl-10 mt-10">
+      <div className="pl-10 mt-3">
         <div>
           <h1 className="text-lg font-bold">Temukan promo menarik</h1>
         </div>
-        <div className="mt-5">
-          <Carousel />
+        <div className="flex gap-3 mt-2">
+          <img src={Banner1} />
+          <img src={Banner2} />
+          <img src={Banner3} />
+          <img src={Banner4} />
+          <img src={Banner5} />
         </div>
       </div>
     </div>
