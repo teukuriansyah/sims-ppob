@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import Input from "../components/Input.tsx"
 
-const Topup = () => {
+const Payment = () => {
   return (
     <div>
       <Navbar />
@@ -29,7 +29,7 @@ const Topup = () => {
           <span>Pembayaran</span>
           <h1 className="text-2xl font-bold">Pembayaran</h1>
         </div>
-        {/* Topup Input */}
+        {/* Payment Input */}
         <div className="mt-8">
           <form className="flex flex-col gap-5">
             <Input inputType="number" placeholder="masukkan nominal topup anda" name="topup"/>
@@ -41,4 +41,4 @@ const Topup = () => {
   )
 }
 
-export default Topup
+export default Payment

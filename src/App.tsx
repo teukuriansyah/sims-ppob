@@ -3,6 +3,7 @@ import Login from "./pages/Login.tsx"
 import User from "./pages/User.tsx"
 import Home from "./pages/Home.tsx"
 import Payment from "./pages/Payment.tsx"
+import Topup from "./pages/Topup.tsx"
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/login" element={<Login/>} />
         <Route path="/user" element={<User/>} />
         <Route path="/payment" element={<Payment/>} />
+        <Route path="/topup" element={<Topup/>} />
       </Routes>
     </BrowserRouter>
   )
