@@ -76,9 +76,9 @@ const Home = () => {
         {/* Button */}
         <div className="flex justify-between items-start">
           {
-            allBtn.map(data => {
+            allBtn.map((data,i) => {
               return (
-                <button className="flex flex-col items-center justify-center w-1/12">
+                <button key={i} className="flex flex-col items-center justify-center w-1/12">
                   <img src={data.image} />
                   <span>{data.name}</span>
                 </button>
@@ -92,7 +92,9 @@ const Home = () => {
         <div>
           <h1 className="text-lg font-bold">Temukan promo menarik</h1>
         </div>
-        <Carousel />
+        <div className="mt-5">
+          <Carousel />
+        </div>
       </div>
     </div>
   )
