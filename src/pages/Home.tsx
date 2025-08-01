@@ -1,69 +1,23 @@
 import { useState, useEffect } from "react"
 import service from "../service/service.ts"
 import Navbar from "../components/Navbar.tsx"
-import Profile from "../assets/Profile Photo.png"
-import PBB from "../assets/PBB.png"
-import Listrik from "../assets/Listrik.png"
-import Pulsa from "../assets/Pulsa.png"
-import PDAM from "../assets/PDAM.png"
-import PGN from "../assets/PGN.png"
-import TVLangganan from "../assets/Televisi.png"
-import Musik from "../assets/Musik.png"
-import Game from "../assets/Game.png"
-import Makanan from "../assets/Voucher Makanan.png"
-import Kurban from "../assets/Kurban.png"
-import Zakat from "../assets/Zakat.png"
-import PaketData from "../assets/Paket Data.png"
-import Banner1 from "../assets/Banner 1.png"
-import Banner2 from "../assets/Banner 2.png"
-import Banner3 from "../assets/Banner 3.png"
-import Banner4 from "../assets/Banner 4.png"
-import Banner5 from "../assets/Banner 5.png"
 
 const Home = () => {
   const [datas,setDatas] = useState([])
-  const allBtn = [{
-    name:"PBB",
-    image:PBB
-  },{
-    name:"Listrik",
-    image:Listrik
-  },{
-    name:"Pulsa",
-    image:Pulsa
-  },{
-    name:"PDAM",
-    image:PDAM
-  },{
-    name:"PGN",
-    image:PGN
-  },{
-    name:"TV Langganan",
-    image:TVLangganan
-  },{
-    name:"Musik",
-    image:Musik
-  },{
-    name:"Voucher Game",
-    image:Game
-  },{
-    name:"Voucher Makanan",
-    image:Makanan
-  },{
-    name:"Kurban",
-    image:Kurban
-  },{
-    name:"Zakat",
-    image:Zakat
-  },{
-    name:"Paket Data",
-    image:PaketData
-  }]
+  const [balance,setBalance] = useState(0)
+  const [banner,setBanner] = useState([])
+  const [services,setServices] = useState([])
   const fetchingData = async() => {
     try {
-      const token = localStorage.getItem("token")
+      const token :string|null = localStorage.getItem("token")
       const { data } = await service.getProfile(token)
+      const { data:balance } = await service.getBalance(token)
+      const { data:banner } = await service.getBanner()
+      const { data:services } = await service.getServices(token)
       setDatas(data.data)
+      setBalance(balance.data.balance)
+      setBanner(banner.data)
+      setServices(services.data)
     }
     catch(err) {
       console.log(err)
@@ -73,8 +27,6 @@ const Home = () => {
   useEffect(() => {
     fetchingData()
   },[])
-  
-  setTimeout(() => console.log(datas),3000)
   return (
     <div>
       <Navbar />
@@ -92,18 +44,18 @@ const Home = () => {
           </div>
           <div className="bg-red-500 text-white rounded-lg w-3/5 flex flex-col gap-4 p-4">
             <span>Saldo anda</span>
-            <h1 className="text-2xl font-bold">Rp </h1>
+            <h1 className="text-2xl font-bold">Rp {balance}</h1>
             <span>Lihat saldo</span>
           </div>
         </div>
         {/* Button */}
         <div className="flex justify-between items-start">
           {
-            allBtn.map((data,i) => {
+            services.map((data,i) => {
               return (
                 <button key={i} className="flex flex-col items-center justify-center w-1/12">
-                  <img src={data.image} />
-                  <span>{data.name}</span>
+                  <img src={data.service_icon} />
+                  <span>{data.service_name}</span>
                 </button>
               )
             })
@@ -116,11 +68,9 @@ const Home = () => {
           <h1 className="text-lg font-bold">Temukan promo menarik</h1>
         </div>
         <div className="flex gap-3 mt-2 z-[-10]">
-          <img src={Banner1} />
-          <img src={Banner2} />
-          <img src={Banner3} />
-          <img src={Banner4} />
-          <img src={Banner5} />
+          {
+            banner?.map((data,i) => <img key={i} src={data?.banner_image} />)
+          }
         </div>
       </div>
     </div>

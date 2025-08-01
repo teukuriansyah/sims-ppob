@@ -13,7 +13,7 @@ const service = {
     const data = api.post("/register",dataBody)
     return data
   },
-  getProfile:(token) => {
+  getProfile:(token:string|null) => {
     const data = api.get("/profile",{
       headers:{
         'Authorization':`Bearer ${token}`
@@ -21,15 +21,15 @@ const service = {
     })
     return data
   },
-  updateProfile:(token,dataBody) => {
-    const { data } = api.put("/profile/update",dataBody,{
+  updateProfile:(token:string|null,dataBody) => {
+    const data = api.put("/profile/update",dataBody,{
       headers:{
         'Authorization':`Bearer ${token}`
       }
     })
     return data
   },
-  updateImage:(token,dataBody) => {
+  updateImage:(token:string,dataBody) => {
     const { data } = api.put("/profile/image",dataBody,{
       headers:{
         'Authorization':`Bearer ${token}`
@@ -37,27 +37,27 @@ const service = {
     })
     return data
   },
-  getBanner:(token) => {
-    const { data } = api.get("/banner")
+  getBanner:() => {
+    const data = api.get("/banner")
     return data
   },
-  getService:(token) => {
-    const { data } = api.get("/services",{
+  getServices:(token:string|null) => {
+    const data = api.get("/services",{
       headers:{
         'Authorization':`Bearer ${token}`
       }
     })
     return data
   },
-  getBalance:(token) => {
-    const { data } = api.post("/services",{
+  getBalance:(token:string|null) => {
+    const data = api.get("/balance",{
       headers:{
         'Authorization':`Bearer ${token}`
       }
     })
     return data
   },
-  postTopup:(token,dataBody) => {
+  postTopup:(token:string|null,dataBody) => {
     const data = api.post("/topup",dataBody,{
       headers:{
         'Authorization':`Bearer ${token}`
@@ -65,15 +65,15 @@ const service = {
     })
     return data
   },
-  postTransaction:(token,dataBody) => {
-    const { data } = api.post("/transaction",dataBody,{
+  postTransaction:(token:string|null,dataBody) => {
+    const data = api.post("/transaction",dataBody,{
       headers:{
         'Authorization':`Bearer ${token}`
       }
     })
     return data
   },
-  getTransactionHistory:(token) => {
+  getTransactionHistory:(token:string) => {
     const { data } = api.post("/transaction/history",{
       headers:{
         'Authorization':`Bearer ${token}`

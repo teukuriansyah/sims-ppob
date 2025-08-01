@@ -1,8 +1,22 @@
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import Input from "../components/Input.tsx"
+import service from "../service/service.ts"
 
 const Payment = () => {
+  const submitPayment = async() => {
+    try {
+      const token = localStorage.getItem("token")
+      const paymentData = {
+        service_code:"PULSA"
+      }
+      const data = await service.postTransaction(token, paymentData)
+      console.log(data)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
   return (
     <div>
       <Navbar />
@@ -31,8 +45,8 @@ const Payment = () => {
         </div>
         {/* Payment Input */}
         <div className="mt-8">
-          <form className="flex flex-col gap-5">
-            <Input inputType="number" placeholder="masukkan nominal topup anda" name="topup"/>
+          <form className="flex flex-col gap-5" action={submitPayment}>
+            <Input inputType="number" placeholder="test" name="payment"/>
             <button className="w-full bg-red-600 text-white py-2 rounded">Bayar</button>
           </form>
         </div>

@@ -1,7 +1,22 @@
 import Input from "../components/Input.tsx"
+import service from "../service/service.ts"
 import Navbar from "../components/Navbar.tsx"
 
 const User = () => {
+  const submitUpdate = async(formData) => {
+    try{
+      const token = localStorage.getItem("token")
+      const updateData = {
+        first_name:formData.get("firstName"),
+        last_name:formData.get("lastName")
+      }
+      const data = await service.updateProfile(token,updateData)
+      console.log(data.data.data)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
   return (
     <div>
       <Navbar />
@@ -11,7 +26,7 @@ const User = () => {
           <h1 className="text-2xl font-bold">Nama user</h1>
         </div>
         <div className="w-2/3">
-          <form className="flex flex-col gap-5">
+          <form className="flex flex-col gap-5" action={submitUpdate}>
             <div className="flex flex-col gap-2">
               <label>Email</label>
               <Input inputType="email" placeholder="masukkan email anda" name="email"/>
