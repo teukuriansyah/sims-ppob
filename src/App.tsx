@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Provider } from "react-redux"
+import store from "./store.ts"
 import Login from "./pages/Login.tsx"
 import User from "./pages/User.tsx"
 import Register from "./pages/Register.tsx"
@@ -8,16 +10,18 @@ import Topup from "./pages/Topup.tsx"
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/user" element={<User/>} />
-        <Route path="/payment" element={<Payment/>} />
-        <Route path="/topup" element={<Topup/>} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/user" element={<User/>} />
+          <Route path="/payment" element={<Payment/>} />
+          <Route path="/topup" element={<Topup/>} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   )
 }
 

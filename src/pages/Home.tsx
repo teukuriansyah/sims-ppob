@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { setProfileData } from "../slice/profileSlice.ts"
 import service from "../service/service.ts"
 import Navbar from "../components/Navbar.tsx"
 
 const Home = () => {
+  const dispatch = useDispatch()
   const [datas,setDatas] = useState([])
   const [balance,setBalance] = useState(0)
   const [banner,setBanner] = useState([])
@@ -18,6 +21,10 @@ const Home = () => {
       setBalance(balance.data.balance)
       setBanner(banner.data)
       setServices(services.data)
+      dispatch(setProfileData({
+        dataProfile: "data.data",
+        balance: "balance.data.balance"
+      }));
     }
     catch(err) {
       console.log(err)

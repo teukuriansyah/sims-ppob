@@ -1,9 +1,12 @@
+import { useSelector } from "react-redux"
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import Input from "../components/Input.tsx"
 import service from "../service/service.ts"
 
 const Payment = () => {
+  const data = useSelector((state) => state.profile)
+  console.log(data)
   const submitPayment = async() => {
     try {
       const token = localStorage.getItem("token")
