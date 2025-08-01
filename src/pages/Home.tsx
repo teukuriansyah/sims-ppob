@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react"
+import service from "../service/service.ts"
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import PBB from "../assets/PBB.png"
@@ -19,6 +21,7 @@ import Banner4 from "../assets/Banner 4.png"
 import Banner5 from "../assets/Banner 5.png"
 
 const Home = () => {
+  const [datas,setDatas] = useState([])
   const allBtn = [{
     name:"PBB",
     image:PBB
@@ -56,6 +59,22 @@ const Home = () => {
     name:"Paket Data",
     image:PaketData
   }]
+  const fetchingData = async() => {
+    try {
+      const token = localStorage.getItem("token")
+      const { data } = await service.getProfile(token)
+      setDatas(data.data)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+  
+  useEffect(() => {
+    fetchingData()
+  },[])
+  
+  setTimeout(() => console.log(datas),3000)
   return (
     <div>
       <Navbar />
@@ -64,11 +83,11 @@ const Home = () => {
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-4">
             <div>
-              <img src={ Profile } />
+              <img src={ datas?.profile_image } />
             </div>
             <div>
               <span>Selamat datang,</span>
-              <h1 className="text-2xl font-bold">nama user</h1>
+              <h1 className="text-2xl font-bold">{datas?.first_name} {datas?.last_name}</h1>
             </div>
           </div>
           <div className="bg-red-500 text-white rounded-lg w-3/5 flex flex-col gap-4 p-4">

@@ -1,8 +1,23 @@
+import service from "../service/service.ts"
 import Input from "../components/Input.tsx"
 import Illustration from "../assets/Illustrasi Login.png"
 import Logo from "../assets/Logo.png"
 
 const Login = () => {
+  const submitLogin = async(formData) => {
+    try {
+      const dataUser = {
+        email:formData.get("email"),
+        password:formData.get("password")
+      }
+      const { data } = await service.userLogin(dataUser)
+      localStorage.setItem("token",data.data.token)
+      window.location.assign("/")
+    }
+    catch (err){
+      console.log(err)
+    }
+  }
   return (
     <div className="flex justify-between h-screen">
       {/* Form */}
@@ -17,7 +32,7 @@ const Login = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5 w-3/4">
-          <form className="flex flex-col gap-10">
+          <form className="flex flex-col gap-10" action={submitLogin}>
             <div className="flex flex-col gap-6">
               <Input inputType="email" placeholder="masukkan email anda" name="email"/>
               <Input inputType="password" placeholder="masukkan password anda" name="password"/>
@@ -27,7 +42,7 @@ const Login = () => {
             </div>
           </form>
           <div className="flex justify-center">
-            <span>belum punya akun? registrasi di sini</span>
+            <span>belum punya akun? registrasi <a href="/register" className="text-red-500 font-bold">di sini</a></span>
           </div>
         </div>
       </div>

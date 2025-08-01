@@ -1,9 +1,23 @@
+import service from "../service/service.ts"
 import Navbar from "../components/Navbar.tsx"
 import Profile from "../assets/Profile Photo.png"
 import Input from "../components/Input.tsx"
 import Modal from "../components/Modal.tsx"
 
 const Topup = () => {
+  const submitTopup = async(formData) => {
+    try {
+      const token = localStorage.getItem("token")
+      const topupData = {
+        top_up_amount:formData.get("topup")
+      }
+      const { data } = await service.postTopup(token,topupData)
+      console.log(data)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
   return (
     <div>
       <Navbar />
@@ -33,7 +47,7 @@ const Topup = () => {
         {/* Topup Input */}
         <div className="mt-8 flex">
           <div className="w-2/3">
-            <form className="flex flex-col gap-5">
+            <form className="flex flex-col gap-5" action={submitTopup}>
               <Input inputType="number" placeholder="masukkan nominal Top Up" name="topup"/>
               <button className="w-full bg-red-600 text-white py-2 rounded">Bayar</button>
             </form>
